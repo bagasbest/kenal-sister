@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "980281274815",
+    "project_id": "kenal-sister",
+    "storage_bucket": "kenal-sister.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980281274815:android:78ac99b271c85f364b310a",
+        "android_client_info": {
+          "package_name": "com.kenalsister.kenalsister"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt6jIgEX6HanecFMsbWvc4mvbjEpVKWoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
