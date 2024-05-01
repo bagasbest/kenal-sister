@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kenalsister/screens/materi/materi_screen.dart';
 import 'package:kenalsister/screens/profile_screen.dart';
 import 'package:kenalsister/widget/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,6 +64,44 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
 
                   /// AKTIFITAS SISWA
+                  (_role == "admin") ? Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ]),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.supervised_user_circle, color: Color(yellow), size: 70,),
+                            SizedBox(width: 16),
+                            Text(
+                              'Siswa Terdaftar (Admin)',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        )
+                      ],
+                    ),
+                  ) : Container(),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  /// CP
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -82,11 +121,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             Image.asset(
-                              'assets/images/ic_silabus.png',
+                              'assets/images/ic_cp.png',
+                              width: 70,
+                              height: 70,
                             ),
                             SizedBox(width: 16),
                             Text(
-                              'Aktifitas Siswa (Admin)',
+                              'Capaian Pembelajaran (CP)',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -102,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  /// SILABUS
+                  /// TP
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -122,11 +163,102 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             Image.asset(
-                              'assets/images/ic_silabus.png',
+                              'assets/images/ic_tp.png',
+                              width: 70,
+                              height: 70,
                             ),
                             SizedBox(width: 16),
                             Text(
-                              'Silabus',
+                              'Tujuan Pembelajaran (TP)',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  /// PETA MATERI
+                  InkWell(
+                    onTap: () {
+
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_peta.png',
+                                width: 70,
+                                height: 70,
+                              ),
+                              SizedBox(width: 16),
+                              Text(
+                                'Peta Materi',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  /// TES AWAL
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ]),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/ic_tes_awal.png',
+                              width: 70,
+                              height: 70,
+                            ),
+                            SizedBox(width: 16),
+                            Text(
+                              'Tes Awal',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -143,6 +275,55 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 16,
                   ),
                   /// MATERI
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => MateriScreen());
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_materi.png',
+                                width: 70,
+                                height: 70,
+                              ),
+                              SizedBox(width: 16),
+                              Text(
+                                'Materi',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  /// TES AKHIR
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -162,11 +343,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             Image.asset(
-                              'assets/images/ic_silabus.png',
+                              'assets/images/ic_tes_akhir.png',
+                              width: 70,
+                              height: 70,
                             ),
                             SizedBox(width: 16),
                             Text(
-                              'Materi',
+                              'Tes Akhir',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -182,7 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  /// JOB SHEET
+                  /// RANGKUMAN MATERI
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -202,11 +385,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             Image.asset(
-                              'assets/images/ic_silabus.png',
+                              'assets/images/ic_rangkuman.png',
+                              width: 70,
+                              height: 70,
                             ),
                             SizedBox(width: 16),
                             Text(
-                              'Jobsheet',
+                              'Rangkuman Materi',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -222,7 +407,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  /// VIDEO TUTORIAL
+                  /// PETUNJUK PENGGUNAAN
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -242,11 +427,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             Image.asset(
-                              'assets/images/ic_silabus.png',
+                              'assets/images/ic_petunjuk.png',
+                              width: 70,
+                              height: 70,
                             ),
                             SizedBox(width: 16),
                             Text(
-                              'Video Tutorial',
+                              'Petunjuk Penggunaan',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -262,7 +449,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  /// EVALUASI
+                  /// GLOSARIUM
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
@@ -282,51 +469,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             Image.asset(
-                              'assets/images/ic_silabus.png',
+                              'assets/images/ic_glosarium.png',
+                              width: 70,
+                              height: 70,
                             ),
                             SizedBox(width: 16),
                             Text(
-                              'Evaluasi',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  /// PETUNJUK
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_silabus.png',
-                            ),
-                            SizedBox(width: 16),
-                            Text(
-                              'Petunjuk',
+                              'Glosarium',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -368,7 +517,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                             children: [
                               Image.asset(
-                                'assets/images/ic_silabus.png',
+                                'assets/images/ic_pengembang.png',
+                                width: 70,
+                                height: 70,
                               ),
                               SizedBox(width: 16),
                               Text(
@@ -387,7 +538,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 100,
                   ),
                 ],
               ),

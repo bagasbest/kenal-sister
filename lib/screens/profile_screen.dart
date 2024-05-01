@@ -33,40 +33,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
           centerTitle: true,
         ),
         body: Container(
+          color: Colors.white,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Stack(
-                    children: [
-                      Image.asset(
-                        'assets/images/icon_apk_master.jpg',
-                        width: MediaQuery.of(context).size.width,
-                        height: 250,
-                        fit: BoxFit.cover,
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(
-                            top: 170,
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(999),
-                              color: Colors.white),
-                          child: Image.asset('assets/images/icon_campus.png'),
-                        ),
-                      )
-                    ],
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/images/ic_logo.jpg',
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/images/icon_apk_master.jpg',
+                    height: 200,
+                    width: 250,
+                    fit: BoxFit.cover,
+                  ),
+                  Image.asset(
+                    'assets/images/ic_profile.jpg',
+                    width: 200,
+                    height: 250,
                   ),
                   SizedBox(
                     height: 16,
                   ),
                   Text(
-                    'Dion',
+                    'NARYA 21520244058',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -79,31 +76,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'Pendidikan Teknik Informatika',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 20,
                     ),
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    'FT-UNP',
+                    'FT-UNY',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 20,
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                  ),
-                  Text(
-                    'Kirim feedback anda di : admin@gmail.com',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40,
                   ),
                 ],
               ),
