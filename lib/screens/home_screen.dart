@@ -1,14 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kenalsister/screens/details/VideoScreen.dart';
 import 'package:kenalsister/screens/materi/materi_screen.dart';
 import 'package:kenalsister/screens/profile_screen.dart';
+import 'package:kenalsister/screens/tes_awal/pre_test_screen.dart';
 import 'package:kenalsister/widget/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'details/TextScreen.dart';
 import 'login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -102,84 +104,104 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 16,
                   ),
                   /// CP
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => TextScreen(option: "CAPAIAN PEMBELAJARAN (CP)"));
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_cp.png',
+                                width: 70,
+                                height: 70,
+                              ),
+                              SizedBox(width: 16),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Text(
+                                  'Capaian Pembelajaran (CP)',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                ),
+                              ),
+                            ],
                           ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_cp.png',
-                              width: 70,
-                              height: 70,
-                            ),
-                            SizedBox(width: 16),
-                            Text(
-                              'Capaian Pembelajaran (CP)',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 16,
                   ),
                   /// TP
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => TextScreen(option: "TUJUAN PEMBELAJARAN (TP)"));
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_tp.png',
+                                width: 70,
+                                height: 70,
+                              ),
+                              SizedBox(width: 16),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Text(
+                                  'Tujuan Pembelajaran (TP)',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                ),
+                              ),
+                            ],
                           ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_tp.png',
-                              width: 70,
-                              height: 70,
-                            ),
-                            SizedBox(width: 16),
-                            Text(
-                              'Tujuan Pembelajaran (TP)',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -188,7 +210,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   /// PETA MATERI
                   InkWell(
                     onTap: () {
-
+                      Route route = MaterialPageRoute(
+                          builder: (context) => VideoScreen(option: "PETA MATERI"));
+                      Navigator.push(context, route);
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -233,42 +257,49 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 16,
                   ),
                   /// TES AWAL
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => PreTestScreen());
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_tes_awal.png',
+                                width: 70,
+                                height: 70,
+                              ),
+                              SizedBox(width: 16),
+                              Text(
+                                'Tes Awal',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ],
                           ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_tes_awal.png',
-                              width: 70,
-                              height: 70,
-                            ),
-                            SizedBox(width: 16),
-                            Text(
-                              'Tes Awal',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -390,10 +421,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 70,
                             ),
                             SizedBox(width: 16),
-                            Text(
-                              'Rangkuman Materi',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.6,
+                              child: Text(
+                                'Rangkuman Materi',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
                             ),
                           ],
                         ),
@@ -432,11 +466,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 70,
                             ),
                             SizedBox(width: 16),
-                            Text(
-                              'Petunjuk Penggunaan',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.6,
+                              child: Text(
+                                'Petunjuk Penggunaan',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            )
                           ],
                         ),
                         Icon(
