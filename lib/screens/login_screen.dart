@@ -1,13 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:kenalsister/database/database.dart';
 import 'package:kenalsister/screens/forgot_password_screen.dart';
 import 'package:kenalsister/screens/register_screen.dart';
 import 'package:kenalsister/widget/themes.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -226,8 +223,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             /// JIKA TERDAFTAR DI DATABASE, MAKA BISA MELKUKAN LOGIN
                             if (shouldNavigate) {
-                              _getUserRole();
-
                               setState(() {
                                 _visible = false;
                               });
@@ -346,25 +341,6 @@ class _LoginScreenState extends State<LoginScreen> {
           'Terdapat kendala ketika ingin login. Silahkan periksa kembali email & password, serta koneksi internet kamu');
       return false;
     }
-  }
-
-  void _getUserRole() async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(FirebaseAuth.instance.currentUser?.uid)
-        .get()
-        .then((value) {
-      role = value.data()!["role"];
-      print(role);
-
-      _saveRoleToSharedPrefs(role);
-    });
-  }
-
-  void _saveRoleToSharedPrefs(String role) async {
-    print(role);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('role', role);
   }
 }
 

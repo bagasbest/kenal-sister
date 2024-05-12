@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kenalsister/screens/admin/admin_screen.dart';
@@ -31,10 +32,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   initState() {
     super.initState();
-    _loadRole();
+    _getUserRole();
     if (widget.isUpdate) {
       _updateLastLogin();
     }
+  }
+
+  void _getUserRole() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .get()
+        .then((value) {
+          setState(() {
+            _role = value.data()!["role"];
+          });
+        });
   }
 
   Future<void> _updateLastLogin() async {
@@ -773,13 +786,5 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     );
-  }
-
-  _loadRole() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _role = prefs.getString('role') ?? '';
-      print('fawfwf $_role');
-    });
   }
 }
