@@ -157,7 +157,7 @@ class _PreTestScreenState extends State<PreTestScreen> {
                           children: [
                             (isCorrectAnswer)
                                 ? Text(
-                                    'Jawaban anda benar  C. Chipset.',
+                                    'Jawaban kamu benar  C. Chipset.',
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,

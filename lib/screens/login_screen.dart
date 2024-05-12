@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kenalsister/database/database.dart';
 import 'package:kenalsister/screens/forgot_password_screen.dart';
 import 'package:kenalsister/screens/register_screen.dart';
 import 'package:kenalsister/widget/themes.dart';
@@ -38,7 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 InkWell(
                   onTap: () => Navigator.of(context).pop(),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 30, top: 30, bottom: 16),
+                    padding:
+                        const EdgeInsets.only(left: 30, top: 30, bottom: 16),
                     child: Row(
                       children: [
                         Icon(
@@ -112,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 AutovalidateMode.onUserInteraction,
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
-                              hintText: 'Inputkan Email anda...',
+                              hintText: 'Inputkan Email kamu...',
                               hintStyle: TextStyle(fontWeight: FontWeight.bold),
                               border: InputBorder.none,
                             ),
@@ -147,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
-                              hintText: 'Inputkan Password anda...',
+                              hintText: 'Inputkan Password kamu...',
                               hintStyle: TextStyle(fontWeight: FontWeight.bold),
                               border: InputBorder.none,
                               suffixIcon: GestureDetector(
@@ -225,7 +227,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             /// JIKA TERDAFTAR DI DATABASE, MAKA BISA MELKUKAN LOGIN
                             if (shouldNavigate) {
                               _getUserRole();
-                              _saveRoleToSharedPrefs();
 
                               setState(() {
                                 _visible = false;
@@ -235,7 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               /// MASUK KE HOMEPAGE JIKA SUKSES LOGIN
                               Route route = MaterialPageRoute(
-                                  builder: (context) => HomeScreen());
+                                  builder: (context) => HomeScreen(isUpdate: true));
                               Navigator.pushReplacement(context, route);
                             } else {
                               setState(() {
@@ -342,7 +343,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return true;
     } catch (error) {
       toast(
-          'Terdapat kendala ketika ingin login. Silahkan periksa kembali email & password, serta koneksi internet anda');
+          'Terdapat kendala ketika ingin login. Silahkan periksa kembali email & password, serta koneksi internet kamu');
       return false;
     }
   }
@@ -353,13 +354,15 @@ class _LoginScreenState extends State<LoginScreen> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get()
         .then((value) {
-      setState(() {
-        role = value.data()!["role"];
-      });
+      role = value.data()!["role"];
+      print(role);
+
+      _saveRoleToSharedPrefs(role);
     });
   }
 
-  void _saveRoleToSharedPrefs() async {
+  void _saveRoleToSharedPrefs(String role) async {
+    print(role);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('role', role);
   }

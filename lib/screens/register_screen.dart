@@ -147,7 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress,
                               decoration: const InputDecoration(
-                                hintText: 'Inputkan email anda...',
+                                hintText: 'Inputkan email kamu...',
                                 hintStyle: TextStyle(fontWeight: FontWeight.bold),
                                 border: InputBorder.none,
                               ),
@@ -182,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               autovalidateMode:
                               AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                hintText: 'Inputkan password anda...',
+                                hintText: 'Inputkan password kamu...',
                                 hintStyle: TextStyle(fontWeight: FontWeight.bold),
                                 border: InputBorder.none,
                                 suffixIcon: GestureDetector(
@@ -347,7 +347,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return true;
     } catch (error) {
       toast(
-          'Gagal melakukan pendaftaran akun, silahkan periksa kembali data diri anda dan koneksi internet anda');
+          'Gagal melakukan pendaftaran akun, silahkan periksa kembali data diri kamu dan koneksi internet kamu');
       return false;
     }
   }
@@ -362,10 +362,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         "email": _emailController.text,
         "password": _passwordController.text,
         "last_login" : "",
-        "role" : "user"
+        "role" : "user",
+        "score" : "0"
       });
     } catch (error) {
-      toast("Gagal melakukan pendaftaran, silahkan cek koneksi internet anda");
+      toast("Gagal melakukan pendaftaran, silahkan cek koneksi internet kamu");
     }
   }
 
@@ -412,7 +413,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 16,
               ),
               const Text(
-                'Anda berhasil terdaftar pada aplikasi\nKenal Sister',
+                'Kamu berhasil terdaftar pada aplikasi\nKenal Sister',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -463,7 +464,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         return AlertDialog(
           title: const Text("Gagal Registrasi"),
           content: const Text(
-            'User gagal terdaftar dalam aplikasi, silahkan periksa data yang anda inputkan dan periksa koneksi internet, coba lagi kemudian',
+            'User gagal terdaftar dalam aplikasi, silahkan periksa data yang kamu inputkan dan periksa koneksi internet, coba lagi kemudian',
             style: TextStyle(
               color: Colors.black,
             ),

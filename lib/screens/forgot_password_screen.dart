@@ -79,7 +79,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 30),
                             child: Text(
-                              'Silahkan inputkan email anda, kami akan membantu mengirimkan email ubah password melalui email anda',
+                              'Silahkan inputkan email kamu, kami akan membantu mengirimkan email ubah password melalui email kamu',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -106,7 +106,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             AutovalidateMode.onUserInteraction,
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
-                              hintText: 'Inputkan Email anda...',
+                              hintText: 'Inputkan Email kamu...',
                               hintStyle: TextStyle(fontWeight: FontWeight.bold),
                               border: InputBorder.none,
                             ),
@@ -259,7 +259,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 height: 16,
               ),
               const Text(
-                'Kami telah mengirimkan email untuk mengubah password anda, silahkan cek email melaui gmail anda',
+                'Kami telah mengirimkan email untuk mengubah password kamu, silahkan cek email melaui gmail kamu',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,

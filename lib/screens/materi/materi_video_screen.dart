@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widget/themes.dart';
+import '../details/VideoScreen.dart';
 
 class MateriVideoScreen extends StatefulWidget {
 
@@ -15,7 +16,6 @@ class _MateriVideoScreenState extends State<MateriVideoScreen> {
       data: Themes(),
       child: Scaffold(
         appBar: AppBar(
-          shadowColor: Colors.white,
           title: Text('Materi Video'),
           titleTextStyle: TextStyle(
             color: Colors.white,
@@ -42,135 +42,156 @@ class _MateriVideoScreenState extends State<MateriVideoScreen> {
                 children: [
                   SizedBox(height: 16,),
                   /// SAPA BELAJAR
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_video_sapa.png',
-                              width: 70,
-                              height: 70,
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => VideoScreen(option: "Video Sapa Belajar"));
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
                             ),
-                            SizedBox(width: 16),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.6,
-                              child: Text(
-                                'Video Sapa Belajar',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_video_sapa.png',
+                                width: 70,
+                                height: 70,
                               ),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                              SizedBox(width: 16),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Text(
+                                  'Video Sapa Belajar',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 16,
                   ),
-                  /// PDF
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_video_materi.png',
-                              width: 70,
-                              height: 70,
+                  /// VIDEO MATERI
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => VideoScreen(option: "Video Materi"));
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
                             ),
-                            SizedBox(width: 16),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.6,
-                              child: Text(
-                                'Video Materi',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_video_materi.png',
+                                width: 70,
+                                height: 70,
                               ),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                              SizedBox(width: 16),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Text(
+                                  'Video Materi',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 16,
                   ),
-                  /// PDF
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_youtube_instalasi_windows.png',
-                              width: 70,
-                              height: 70,
+                  /// INSTALASI WIN 11
+                  InkWell(
+                    onTap: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => VideoScreen(option: "Video Instalasi Windows 11"));
+                      Navigator.push(context, route);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
                             ),
-                            SizedBox(width: 16),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.6,
-                              child: Text(
-                                'Video Youtube Instalasi Windows',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/ic_youtube_instalasi_windows.png',
+                                width: 70,
+                                height: 70,
                               ),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black,
-                        )
-                      ],
+                              SizedBox(width: 16),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Text(
+                                  'Video Youtube Instalasi Windows',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

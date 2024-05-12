@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     } else {
       if (user != null) {
-        return HomeScreen();
+        return HomeScreen(isUpdate: true);
       } else {
         return OnboardingScreen();
       }

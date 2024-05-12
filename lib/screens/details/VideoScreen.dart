@@ -19,7 +19,17 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/vc_peta_materi.mp4');
+    var sourceVideo = '';
+    if (widget.option == 'PETA MATERI') {
+      sourceVideo = 'assets/videos/vc_peta_materi.mp4';
+    } else if (widget.option == 'Video Sapa Belajar') {
+      sourceVideo = 'assets/videos/vc_sapa_belajar.mp4';
+    } else if (widget.option == 'Video Materi') {
+      sourceVideo = 'assets/videos/vc_materi.mp4';
+    } else {
+      sourceVideo = 'assets/videos/vc_soal_19.mp4';
+    }
+    _controller = VideoPlayerController.asset(sourceVideo);
     _initializeVideoPlayerFuture = _controller.initialize().then((_) {
       setState(() {});
     });
@@ -97,31 +107,29 @@ class _VideoScreenState extends State<VideoScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  (widget.option == "PETA MATERI")
-                      ? Column(
-                          children: [
-                            FutureBuilder(
-                              future: _initializeVideoPlayerFuture,
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState == ConnectionState.done) {
-                                  return Column(
-                                    children: [
-                                      AspectRatio(
-                                        aspectRatio: _controller.value.aspectRatio,
-                                        child: VideoPlayer(_controller),
-                                      ),
-                                      _videoProgressIndicator(),
-                                      _playPauseButton(),
-                                    ],
-                                  );
-                                } else {
-                                  return Center(child: CircularProgressIndicator());
-                                }
-                              },
-                            ),
-                          ],
-                        )
-                      : Container()
+                  Column(
+                    children: [
+                      FutureBuilder(
+                        future: _initializeVideoPlayerFuture,
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.done) {
+                            return Column(
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: _controller.value.aspectRatio,
+                                  child: VideoPlayer(_controller),
+                                ),
+                                _videoProgressIndicator(),
+                                _playPauseButton(),
+                              ],
+                            );
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        },
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
